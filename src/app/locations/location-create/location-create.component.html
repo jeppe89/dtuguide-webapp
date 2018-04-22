@@ -1,0 +1,31 @@
+<h2>{{ title }}</h2>
+<form
+  [formGroup]="form"
+  novalidate>
+  <mat-form-field>
+    <input 
+      matInput 
+      placeholder="Input"
+      formControlName="name">
+      <mat-error 
+        *ngIf="name.hasError('required')">
+        Name is required.
+      </mat-error>
+      <mat-error 
+        *ngIf="name.hasError('minlength')">
+        Name must be more than 4 characters.
+      </mat-error>
+  </mat-form-field>
+  <br>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="add()">
+    Create Location
+  </button>
+</form>
+<div>
+  <h3>Form values:</h3>
+  <p>Form value: <br> {{ form.value | json }}</p>
+  <p>Validation status: {{ form.status | json }}</p>
+</div>

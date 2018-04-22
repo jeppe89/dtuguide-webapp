@@ -1,0 +1,101 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "j",
+      "password": "j"
+    }
+  ],
+  "auth": [
+    {
+      "id": 1,
+      "date": "03-18-2016",
+      "message": "Nice!"
+    },
+    {
+      "id": 2,
+      "date": "06-21-2017",
+      "message": "Great view!"
+    }
+  ],
+  "locations": [
+    {
+      "id": "a020",
+      "description": "",
+      "floor": "0",
+      "landmark": "STAIRS_UP",
+      "name": "A Stairs Basement",
+      "position": {
+        "latitude": 55.731662,
+        "longitude": 12.397516
+      }
+    },
+    {
+      "id": "a120",
+      "description": "",
+      "floor": "1",
+      "landmark": "STAIRS_DOWN",
+      "name": "A Stairs Ground",
+      "position": {
+        "latitude": 55.731662,
+        "longitude": 12.397516
+      }
+    },
+    {
+      "id": "bookstore",
+      "description": "",
+      "floor": "1",
+      "landmark": "SHOP",
+      "name": "Book Store",
+      "position": {
+        "latitude": 55.731746,
+        "longitude": 12.396251
+      }
+    },
+    {
+      "id": "c071",
+      "description": "",
+      "floor": "0",
+      "landmark": "STAIRS_UP",
+      "name": "U Stairs Basement",
+      "position": {
+        "latitude": 55.732406,
+        "longitude": 12.394476
+      }
+    },
+    {
+      "id": "c1100",
+      "description": "",
+      "floor": "1",
+      "landmark": "STAIRS_UP",
+      "name": "A D Stairs Ground",
+      "position": {
+        "latitude": 55.731551,
+        "longitude": 12.397045
+      }
+    },
+    {
+      "id": "c1150",
+      "description": "Entrance to P S Q",
+      "floor": "1",
+      "landmark": "ENTRANCE",
+      "name": "Entrance East",
+      "position": {
+        "latitude": 55.730446,
+        "longitude": 12.40017
+      }
+    },
+    {
+      "name": "asdasdsd",
+      "id": "817G9E2"
+    },
+    {
+      "name": "erterte",
+      "id": "oPq3JDn"
+    },
+    {
+      "name": "ddfgdgf",
+      "id": "Z1b8CUW"
+    }
+  ]
+}
