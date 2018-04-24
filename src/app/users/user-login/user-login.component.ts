@@ -22,11 +22,7 @@ export class UserLoginComponent {
 
   login(): void {
     const credentials = this.form.value;
-    this.service.auth(credentials.username, credentials.password)
-      .subscribe(
-        data => console.log(data),
-        error => console.log(error)
-      );
+    this.service.auth(credentials.username, credentials.password);
   }
 
 }

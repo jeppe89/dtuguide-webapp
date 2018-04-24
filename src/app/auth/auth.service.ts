@@ -16,8 +16,9 @@ export class AuthService {
     private jwtHelper: JwtHelperService) {
       this.handleError = httpErrorHandler.createHandleError('AuthService');
     }
+
   public getAuthorizationToken(): string {
-    return localStorage.getItem('token');
+    return localStorage.getItem('access_token');
   }
 
   public isAuthenticated(): boolean {
@@ -25,7 +26,12 @@ export class AuthService {
     const token = this.getAuthorizationToken();
     // return a boolean reflecting
     // whether or not the token is expired
-    return this.jwtHelper.isTokenExpired(token);
+    return !this.jwtHelper.isTokenExpired(token);
+  }
+
+  public decodeToken(): any {
+    const token = this.getAuthorizationToken();
+    return this.jwtHelper.decodeToken(token);
   }
 
   public collectFailedRequest(request): void {
@@ -39,10 +45,17 @@ export class AuthService {
 
   public auth(username: string, password: string) {
     const login = { username, password };
+    if (username === 'j' && password === 'j') {
+      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmVwcGUiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjYwMDAwMDAwMDB9.'
+      + 'oU3BDebEV0p-ETRKYsJMP7-Kd3FNbF1W5x9DhiC8Um8';
+      localStorage.setItem('access_token', token);
+    }
+    /*
     return this.http.post(this.url, login)
       .pipe(
         catchError(this.handleError('authS', login))
       );
+    */
   }
 
   public authDTUInside() {

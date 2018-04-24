@@ -1,3 +1,5 @@
+import { AuthService } from './../../auth/auth.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -13,11 +15,12 @@ export class LocationListComponent implements OnInit {
 
   locations$: Observable<DTULocation[]>;
 
-  constructor(private service: LocationService) { }
+  constructor(private service: LocationService, private auth: AuthService) { }
 
   ngOnInit() {
     // this.suggestionsList();
     this.suggestionsList();
+    console.log(this.auth.isAuthenticated());
   }
 
   suggestionsList() {
