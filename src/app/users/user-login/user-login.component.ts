@@ -1,5 +1,7 @@
+import { LocationService } from './../../locations/shared/location.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
 
 import { AuthService } from './../../auth/auth.service';
 
@@ -13,16 +15,20 @@ export class UserLoginComponent {
 
   constructor(
     @Inject(FormBuilder) fb: FormBuilder,
-    private service: AuthService) {
+    private auth: AuthService, private location: LocationService) {
       this.form = fb.group({
-        username: [''],
-        password: ['']
+        username: ['s144265'],
+        password: ['123456']
       });
   }
 
   login(): void {
-    const credentials = this.form.value;
-    this.service.auth(credentials.username, credentials.password);
+    const formVal = this.form.value;
+    this.auth.authenticate(formVal.username, formVal.password);
+      /*
+     this.location.addLocation(formVal).subscribe(data => console.log(data), // success path
+     error => console.log(error) // error path);
+     */
   }
 
 }

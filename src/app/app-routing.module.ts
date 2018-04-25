@@ -12,10 +12,12 @@ const routes: Routes = [
   {
     path: 'locations/create',
     component: LocationCreateComponent,
+    /*
     canActivate: [AuthGuard],
     data: {
       expectedRole: 'admin'
     }
+    */
   },
   { path: 'login', component: UserLoginComponent }
 ];

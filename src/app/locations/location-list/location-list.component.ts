@@ -15,12 +15,11 @@ export class LocationListComponent implements OnInit {
 
   locations$: Observable<DTULocation[]>;
 
-  constructor(private service: LocationService, private auth: AuthService) { }
+  constructor(private service: LocationService) { }
 
   ngOnInit() {
     // this.suggestionsList();
     this.suggestionsList();
-    console.log(this.auth.isAuthenticated());
   }
 
   suggestionsList() {

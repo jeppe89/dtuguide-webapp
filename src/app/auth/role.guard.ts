@@ -20,6 +20,7 @@ export class RoleGuard implements CanActivate {
     // const token = this.auth.getAuthorizationToken();
 
     // decode the token to get its payload
+    /*
     const tokenPayload = this.auth.decodeToken();
 
     if (
@@ -29,6 +30,7 @@ export class RoleGuard implements CanActivate {
       this.router.navigate(['login']);
       return false;
     }
+    */
     return true;
   }
 }

@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './../../auth/auth.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -9,9 +10,9 @@ import { AppMaterialModule } from '../../app-material.module';
 @NgModule({
   imports: [
     CommonModule,
-    AppMaterialModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
-    AuthModule
+    AppMaterialModule
   ],
   declarations: [UserLoginComponent]
 })

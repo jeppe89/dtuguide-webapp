@@ -13,7 +13,6 @@ import { LocationCreateComponent } from '../location-create/location-create.comp
   imports: [
     CommonModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     ReactiveFormsModule,
     AppMaterialModule
   ],

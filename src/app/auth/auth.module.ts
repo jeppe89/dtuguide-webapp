@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CookieModule, CookieService } from 'ngx-cookie';
 
 import { AuthService } from './auth.service';
-import { AuthGuard } from './auth.guard';
-import { RoleGuard } from './role.guard';
 
 @NgModule({
   imports: [
-    CommonModule
   ],
   declarations: [],
-  providers: [AuthService, AuthGuard, RoleGuard]
+  providers: [AuthService]
 })
 export class AuthModule { }
