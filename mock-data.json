@@ -20,109 +20,83 @@
   ],
   "locations": [
     {
-      "id": "a020",
-      "description": "",
+      "id": 0,
+      "description": "Test",
       "floor": "0",
       "landmark": "STAIRS_UP",
       "name": "A Stairs Basement",
-      "position": {
-        "latitude": 55.731662,
-        "longitude": 12.397516
-      }
+      "latitude": 55.731662,
+      "longitude": 12.397516
     },
     {
-      "id": "a120",
+      "id": 1,
       "description": "",
       "floor": "1",
       "landmark": "STAIRS_DOWN",
       "name": "A Stairs Ground",
-      "position": {
-        "latitude": 55.731662,
-        "longitude": 12.397516
-      }
+      "latitude": 55.731662,
+      "longitude": 12.397516
     },
     {
-      "id": "bookstore",
+      "id": 2,
       "description": "",
       "floor": "1",
       "landmark": "SHOP",
       "name": "Book Store",
-      "position": {
-        "latitude": 55.731746,
-        "longitude": 12.396251
-      }
+      "latitude": 55.731746,
+      "longitude": 12.396251
     },
     {
-      "id": "c071",
+      "id": 3,
       "description": "",
       "floor": "0",
       "landmark": "STAIRS_UP",
       "name": "U Stairs Basement",
-      "position": {
-        "latitude": 55.732406,
-        "longitude": 12.394476
-      }
+      "latitude": 55.732406,
+      "longitude": 12.394476
     },
     {
-      "id": "c1100",
-      "description": "",
-      "floor": "1",
-      "landmark": "STAIRS_UP",
+      "id": 4,
       "name": "A D Stairs Ground",
-      "position": {
-        "latitude": 55.731551,
-        "longitude": 12.397045
-      }
+      "description": "hehe",
+      "floor": 1,
+      "landmark": "TEST",
+      "latitude": "55.22311",
+      "longitude": "51.7745"
     },
     {
-      "id": "c1150",
+      "id": 5,
       "description": "Entrance to P S Q",
       "floor": "1",
       "landmark": "ENTRANCE",
       "name": "Entrance East",
-      "position": {
-        "latitude": 55.730446,
-        "longitude": 12.40017
+      "latitude": 55.730446,
+      "longitude": 12.40017
+    },
+    {
+      "id": 6,
+      "description": "",
+      "floor": "2",
+      "landmark": "lrtd",
+      "name": "1234test",
+      "latitude": "55.77",
+      "longitude": "53.22"
+    }
+  ],
+  "suggestions": [
+    {
+      "id": 0,
+      "author": "Jeppe",
+      "date": "30-04-2018 20:00",
+      "location": {
+        "id": 6,
+        "description": "",
+        "floor": "0",
+        "landmark": "lrtd",
+        "name": "jeppesuggestionny",
+        "latitude": "55.77",
+        "longitude": "53.22"
       }
-    },
-    {
-      "name": "asdasdsd",
-      "id": "817G9E2"
-    },
-    {
-      "name": "erterte",
-      "id": "oPq3JDn"
-    },
-    {
-      "name": "ddfgdgf",
-      "id": "Z1b8CUW"
-    },
-    {
-      "name": "rr",
-      "id": "PuxX~2N"
-    },
-    {
-      "name": "rrrrrr",
-      "id": "uCdEG6S"
-    },
-    {
-      "username": "s144265",
-      "password": "123456",
-      "id": "3_N4B41"
-    },
-    {
-      "name": "asa",
-      "id": "WDQOaM6"
-    },
-    {
-      "username": "s144265",
-      "password": "123456",
-      "id": "E0PAtOQ"
-    },
-    {
-      "username": "s144265",
-      "password": "123456",
-      "id": "9i3azlW"
     }
   ]
 }

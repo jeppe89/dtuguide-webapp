@@ -5,7 +5,14 @@ import {
   MatInputModule,
   MatButtonModule,
   MatListModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatCardModule,
+  MatSnackBarModule
 } from '@angular/material';
 
 @NgModule({
@@ -14,7 +21,14 @@ import {
     MatInputModule,
     MatButtonModule,
     MatListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
+    MatSelectModule,
+    MatCardModule,
+    MatSnackBarModule
   ]
 })
 export class AppMaterialModule { }

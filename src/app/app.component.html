@@ -1,22 +1,10 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" *ngIf="isLoggedIn$ | async as isLoggedIn">
     <span>{{ title }}</span>
-    <span class="example-fill-remaining-space"></span>
-    <a
-        routerLink="/login"
-        mat-button>
-        Login
-    </a>
-    <a
-        routerLink="/locations"
-        routerLinkActive="active"
-        mat-button>
-        All locations
-    </a>
-    <a
-        routerLink="/locations/create"
-        routerLinkActive="active"
-        mat-button>
-        Create Location
-    </a>
+    <a [routerLink]="['location']" routerLinkActive="active" mat-button>Locations</a>
+    <a [routerLink]="['location']" routerLinkActive="active" mat-button>People</a>
+    <a [routerLink]="['suggestion']" routerLinkActive="active" mat-button>Suggestions</a>
+    <span class="fill-remaining-space"></span>
+    <button mat-button *ngIf="isLoggedIn" (click)="checkToken()">Check Token</button>
+    <button mat-button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
 </mat-toolbar>
 <router-outlet></router-outlet>

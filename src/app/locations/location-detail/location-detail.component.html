@@ -1,0 +1,10 @@
+<div *ngIf="location; else loading">
+  {{ location.id }}<br>
+  {{ location.name }}<br>
+  {{ location.description }}<br>
+  {{ location.landmark }}<br>
+  <button mat-raised-button (click)="goBack()">Back</button>
+</div>
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

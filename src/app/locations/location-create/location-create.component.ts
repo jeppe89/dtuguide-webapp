@@ -1,8 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
+import { Location } from '@angular/common';
 
 import { LocationService } from './../shared/location.service';
 import { DTULocation } from './../shared/location.interface';
+import { LocationFormComponent } from './../location-form/location-form.component';
 
 @Component({
   selector: 'app-location-create',
@@ -10,44 +12,23 @@ import { DTULocation } from './../shared/location.interface';
   styleUrls: ['./location-create.component.css']
 })
 export class LocationCreateComponent implements OnInit {
-  form: FormGroup;
   title = 'Create Location';
-  location: DTULocation;
-  error: any;
+  @ViewChild(LocationFormComponent) locationComp: LocationFormComponent;
 
-  constructor(
-    @Inject(FormBuilder) fb: FormBuilder,
-    private service: LocationService) {
-      this.form = fb.group({
-        name: ['', [
-          Validators.required,
-          Validators.minLength(4)
-        ]]
-      });
-  }
-  /*
-  errorMessage(formControl: AbstractControl) {
-    return formControl.hasError('required') ? 'You must enter a value' :
-    formControl.hasError('minlength') ? 'Must be more than 4 characters' :
-      '';
-  }
-  */
-  abstractControl(formControlName: string) {
-    return this.form.get(formControlName);
-  }
-
-  get name() {
-    return this.form.get('name');
-  }
+  constructor(private service: LocationService, private loc: Location) { }
 
   ngOnInit() {
   }
 
-  add() {
-    const newLocation: DTULocation = this.form.value as DTULocation;
+  addLocation() {
+    const newLocation: DTULocation = this.locationComp.form.value;
     this.service.addLocation(newLocation)
       .subscribe(data => console.log(data), // success path
         error => console.log(error) // error path);
       );
+  }
+
+  goBack() {
+    return this.loc.back();
   }
 }

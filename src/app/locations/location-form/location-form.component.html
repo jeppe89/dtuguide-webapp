@@ -1,0 +1,66 @@
+<form
+  [formGroup]="form">
+  <mat-form-field>
+    <input 
+      matInput formControlName="id" placeholder="Id">
+      <mat-error 
+        *ngIf="id.hasError('required')">
+        Id is required.
+      </mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input 
+      matInput formControlName="name" placeholder="Name" >
+      <mat-error 
+        *ngIf="name.hasError('required')">
+        Name is required.
+      </mat-error>
+      <mat-error 
+        *ngIf="name.hasError('minlength')">
+        Name must be more than 4 characters.
+      </mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input 
+      matInput formControlName="description" placeholder="Description">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input 
+      matInput formControlName="landmark" placeholder="Landmark">
+    <mat-error 
+      *ngIf="landmark.hasError('required')">
+      Landmark is required.
+    </mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-select formControlName="floor" placeholder="Select floor">
+      <mat-option *ngFor="let floor of floors; index as i" value="{{ i }}">{{ floor }}</mat-option>
+    </mat-select>
+    <mat-error 
+      *ngIf="floor.hasError('required')">
+      Please choose a floor.
+    </mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input 
+      matInput formControlName="latitude" placeholder="Latitude">
+    <mat-error 
+      *ngIf="latitude.hasError('required')">
+      Latitude is required.
+    </mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input 
+      matInput formControlName="longitude" placeholder="Longitude">
+    <mat-error 
+      *ngIf="longitude.hasError('required')">
+      Longitude is required.
+    </mat-error>
+  </mat-form-field>
+</form>

@@ -1,0 +1,22 @@
+<div *ngIf="location">
+  <app-location-form #locationFormComp [location]="location" [disabledElements]="disableElements"></app-location-form>
+  <button
+      mat-raised-button
+      [disabled]="!locationComp.form.valid"
+      color="primary"
+      (click)="saveChanges()">
+      Save changes
+    </button>
+  <button
+    mat-button
+    (click)="goBack()">
+    Cancel
+  </button>
+</div>
+<!--
+<div *ngIf="locationComp">
+      <h3>Form values:</h3>
+      <p>Form value: <br> {{ locationComp.form.value | json }}</p>
+      <p>Validation status: {{ locationComp.form.status | json }}</p>
+  </div>
+-->
