@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 import { LocationService } from './../shared/location.service';
 import { DTULocation } from './../shared/location.interface';
-import { LocationFormComponent } from './../location-form/location-form.component';
+import { LocationFormComponent } from '../location-form/location-form.component';
 
 @Component({
   selector: 'app-location-create',

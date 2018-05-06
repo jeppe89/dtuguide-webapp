@@ -1,10 +1,20 @@
-<mat-toolbar color="primary" *ngIf="isLoggedIn$ | async as isLoggedIn">
-    <span>{{ title }}</span>
-    <a [routerLink]="['location']" routerLinkActive="active" mat-button>Locations</a>
-    <a [routerLink]="['location']" routerLinkActive="active" mat-button>People</a>
-    <a [routerLink]="['suggestion']" routerLinkActive="active" mat-button>Suggestions</a>
+<mat-toolbar color="primary" *ngIf="showTopBar$ | async">
+    <span style="margin-right: 4rem">{{ title }}</span>
+    <a routerLink="locations" routerLinkActive="active" mat-button>Locations</a>
+    <a routerLink="people" routerLinkActive="active" mat-button>People</a>
+    <a routerLink="suggestions" routerLinkActive="active" mat-button >Suggestions</a>
+    <!--[matMenuTriggerFor]="suggestionsMenu" #menuTrigger="matMenuTrigger" (mouseenter)="menuTrigger.openMenu()"
+        <mat-menu #suggestionsMenu="matMenu" style="margin-top: 50px;">
+        <div (mouseleave)="menuTrigger.closeMenu()">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+        </div>        
+    </mat-menu>
+    -->
     <span class="fill-remaining-space"></span>
-    <button mat-button *ngIf="isLoggedIn" (click)="checkToken()">Check Token</button>
-    <button mat-button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+    <button mat-button (click)="checkToken()">Check Token</button>
+    <button mat-button (click)="logout()">Logout</button>
 </mat-toolbar>
-<router-outlet></router-outlet>
+<div class="app-content">
+    <router-outlet></router-outlet>
+</div>

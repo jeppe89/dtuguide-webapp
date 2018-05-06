@@ -1,3 +1,5 @@
+import { SearchData } from './../../utils/search-data.interface';
+import { Observable } from 'rxjs/Observable';
 import { Component, OnInit, Inject, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
@@ -15,9 +17,8 @@ export class LocationEditComponent implements OnInit {
 
   // form: FormGroup;
   title = 'Edit Location';
-  disableElements = [ 'id' ];
-
-  @Input() location: DTULocation;
+  id = this.route.snapshot.paramMap.get('id');
+  searchData$: Observable<SearchData>;
   @ViewChild(LocationFormComponent) locationFormComp: LocationFormComponent;
 
   constructor(
@@ -30,15 +31,14 @@ export class LocationEditComponent implements OnInit {
   }
 
   getLocation(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.service.getLocation(id)
-      .subscribe(location => this.location = location);
+    this.searchData$ = this.service.getLocation(this.id);
   }
 
   saveChanges(): void {
-    if (this.locationFormComp.form.valid) {
+    if (this.locationFormComp.form.valid && (this.locationFormComp.id.value === this.id)) {
       const newLocation = this.locationFormComp.form.value;
-      this.service.editLocation(newLocation).subscribe(location => console.log('Saved to database: ' + location));
+      console.log(newLocation);
+      // this.service.editLocation(newLocation).subscribe(location => console.log('Saved to database: ' + location));
     }
   }
 

@@ -1,3 +1,4 @@
+<h2>{{ title }}</h2>
 <mat-form-field>
   <input matInput placeholder="Filter locations" #filter>
 </mat-form-field>
@@ -6,11 +7,10 @@
     <mat-spinner></mat-spinner>
 </div>
 
-<mat-table #table [dataSource]="dataSource" 
-  matSort matSortActive="id" matSortDirection="asc" matSortDisableClear 
+<mat-table #table [dataSource]="dataSource"
   (mouseleave)="hoverIndex = null">
   <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
       <mat-cell *matCellDef="let location;"> {{location.id}} </mat-cell>
   </ng-container>
   <ng-container matColumnDef="name">
@@ -25,9 +25,8 @@
     <mat-header-cell *matHeaderCellDef></mat-header-cell>
     <mat-cell *matCellDef="let location; let i = index">
       <div *ngIf="hoverIndex==i">
-        <a routerLink="../detail/{{location.id}}" mat-button color="primary">View</a>
-        <a routerLink="../edit/{{location.id}}" mat-button color="primary">Edit</a>
-        <button mat-button color="primary">Make Suggestion</button>
+        <a routerLink="{{location.name}}" mat-button color="primary">View</a>
+        <a routerLink="/suggestions/locations/{{location.name}}/edit" mat-button color="primary">Suggest changes</a>
       </div>
     </mat-cell>
   </ng-container>
@@ -35,4 +34,4 @@
   <mat-row *matRowDef="let row; let i = index; columns: displayedColumns" (mouseover)="hoverIndex=i"></mat-row>
 </mat-table>
   
-<mat-paginator [length]="30" [pageSizeOptions]="[ 5, 10, 25, 100]"></mat-paginator>
+<mat-paginator [length]="totalItems$ | async" [pageSizeOptions]="[ 5, 10, 25, 100]"></mat-paginator>

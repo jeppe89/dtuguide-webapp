@@ -81,9 +81,27 @@
       "name": "1234test",
       "latitude": "55.77",
       "longitude": "53.22"
+    },
+    {
+      "description": "adfasf",
+      "floor": "1",
+      "landmark": "asdfasf",
+      "name": "asdasf",
+      "latitude": "313",
+      "longitude": "13131",
+      "id": 7
+    },
+    {
+      "description": "adfasf432",
+      "floor": "1",
+      "landmark": "asdfasf",
+      "name": "322222222",
+      "latitude": "313234234",
+      "longitude": "13131",
+      "id": 8
     }
   ],
-  "suggestions": [
+  "suggestions_locations": [
     {
       "id": 0,
       "author": "Jeppe",
@@ -98,5 +116,6 @@
         "longitude": "53.22"
       }
     }
-  ]
+  ],
+  "suggestions_people": []
 }

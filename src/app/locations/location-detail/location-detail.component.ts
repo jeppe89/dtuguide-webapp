@@ -1,6 +1,9 @@
+import { SearchData } from './../../utils/search-data.interface';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Observable } from 'rxjs/Observable';
+
 import { DTUFloors } from './../shared/floors';
 import { LocationService } from './../shared/location.service';
 import { DTULocation } from './../shared/location.interface';
@@ -12,8 +15,8 @@ import { DTULocation } from './../shared/location.interface';
 })
 export class LocationDetailComponent implements OnInit {
 
-  @Input() location: DTULocation;
   floors = DTUFloors;
+  searchData$: Observable<SearchData>;
 
   constructor(private service: LocationService,
     private route: ActivatedRoute,
@@ -25,8 +28,7 @@ export class LocationDetailComponent implements OnInit {
 
   getLocation(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.service.getLocation(id)
-      .subscribe(location => this.location = location);
+    this.searchData$ = this.service.getLocation(id);
   }
 
   goBack() {

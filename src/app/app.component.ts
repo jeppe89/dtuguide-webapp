@@ -1,3 +1,5 @@
+import { NotificationService } from './utils/notification.service';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth/auth.service';
 import { Observable } from 'rxjs/Observable';
@@ -9,12 +11,26 @@ import { Observable } from 'rxjs/Observable';
 })
 export class AppComponent implements OnInit {
   title = 'DTU Guide';
-  isLoggedIn$: Observable<boolean>;
+  showTopBar$: Observable<boolean>;
 
-  constructor(private auth: AuthService) { }
+  constructor(
+    private auth: AuthService,
+    private snackBar: MatSnackBar,
+    private notification: NotificationService) { }
 
   ngOnInit() {
-    this.isLoggedIn$ = this.auth.isLoggedIn;
+    this.showTopBar$ = this.auth.showTopBarIfAuth;
+    this.showNotificationSnackBar();
+  }
+
+  showNotificationSnackBar() {
+    this.notification.notification$.subscribe(message => {
+      if (message !== null) {
+        this.snackBar.open(message, null, {
+          duration: 3000
+        });
+      }
+    });
   }
 
   logout() {

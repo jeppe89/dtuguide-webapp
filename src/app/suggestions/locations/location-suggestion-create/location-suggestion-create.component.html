@@ -1,0 +1,14 @@
+<h2>{{ title }}</h2>
+<app-location-form #locationFormComp [hideId]=true></app-location-form>
+<button
+    mat-raised-button
+    [disabled]="!locationFormComp.form.valid"
+    color="primary"
+    (click)="addLocationSuggestion()">
+    Create suggestion
+  </button>
+<button
+  mat-button
+  (click)="goBack()">
+  Cancel
+</button>

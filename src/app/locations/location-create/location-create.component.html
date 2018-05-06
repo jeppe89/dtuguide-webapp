@@ -1,5 +1,5 @@
 <h2>{{ title }}</h2>
-<app-location-form #locationComp></app-location-form>
+<app-location-form #locationComp [hideId]=true></app-location-form>
 <button
     mat-raised-button
     [disabled]="!locationComp.form.valid"

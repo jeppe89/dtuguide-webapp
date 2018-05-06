@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { LocationService } from './../../locations/shared/location.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -10,16 +11,26 @@ import { AuthService } from './../../auth/auth.service';
   templateUrl: './user-login.component.html',
   styleUrls: ['./user-login.component.css']
 })
-export class UserLoginComponent {
+export class UserLoginComponent implements OnInit {
   form: FormGroup;
 
   constructor(
     @Inject(FormBuilder) fb: FormBuilder,
-    private auth: AuthService, private location: LocationService) {
+    private auth: AuthService, private router: Router) {
       this.form = fb.group({
         username: ['s144265'],
         password: ['123456']
       });
+  }
+
+  ngOnInit() {
+    this.redirectIfAuthenticated();
+  }
+
+  redirectIfAuthenticated() {
+    if (this.auth.isAuthenticated()) {
+      this.router.navigate(['']);
+    }
   }
 
   login(): void {

@@ -1,5 +1,6 @@
 <mat-card>
   <mat-card-content>
+    <h1>DTU Guide login</h1>
     <form (ngSubmit)="login()"
       [formGroup]="form">
       <mat-form-field>
@@ -8,6 +9,7 @@
           placeholder="Username"
           formControlName="username">
       </mat-form-field>
+      <br>
       <mat-form-field>
         <input 
           matInput

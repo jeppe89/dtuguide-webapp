@@ -1,8 +1,9 @@
-import { DTUFloors } from './../shared/floors';
-import { Component, OnInit, Input, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { DTULocation } from '../shared/location.interface';
-import { LocationService } from '../shared/location.service';
+import { Component, OnInit, Input, Inject, ElementRef } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { DTUFloors } from '../../locations/shared/floors';
+import { LocationSuggestion } from './../../suggestions/locations/shared/location-suggestion.interface';
+import { DTULocation } from '../../locations/shared/location.interface';
+
 
 @Component({
   selector: 'app-location-form',
@@ -13,12 +14,11 @@ export class LocationFormComponent implements OnInit {
 
   form: FormGroup;
   floors: string[] = DTUFloors;
-  @Input() location: DTULocation;
-  @Input() disabledElements: string[];
+  @Input() location: DTULocation | LocationSuggestion;
+  @Input() hideId: boolean;
 
   constructor(
-    @Inject(FormBuilder) fb: FormBuilder,
-    private service: LocationService) {
+    @Inject(FormBuilder) fb: FormBuilder) {
       this.form = fb.group({
         id: ['', [
           Validators.required
@@ -45,20 +45,25 @@ export class LocationFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    let id = null;
+    if (this.location) {
+      id = (this.location as DTULocation).id ?
+        (this.location as DTULocation).id :
+        (this.location as LocationSuggestion).suggestionID;
+    }
+
     this.form.setValue({
-      id: this.location ? this.location.id : '',
+      id: this.location ? id : '',
       description: this.location ? this.location.description : '',
-      floor: this.location ? this.location.floor : '',
+      floor: this.location ? this.location.floor.toString() : '',
       landmark: this.location ? this.location.landmark : '',
       name: this.location ? this.location.name : '',
       latitude: this.location ? this.location.latitude : '',
       longitude: this.location ? this.location.longitude : '',
     });
 
-    if (this.disabledElements) {
-      for (const element of this.disabledElements) {
-        this.form.get(element).disable();
-      }
+    if (this.hideId) {
+      this.id.disable();
     }
   }
 

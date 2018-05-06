@@ -1,0 +1,66 @@
+<form
+  [formGroup]="form">
+  <mat-form-field *ngIf="!hideId">
+    <input
+      matInput formControlName="id" readonly="true" placeholder="Id">
+      <mat-error 
+        *ngIf="id.hasError('required')">
+        Id is required.
+      </mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input 
+      matInput formControlName="name" placeholder="Name" >
+      <mat-error 
+        *ngIf="name.hasError('required')">
+        Name is required.
+      </mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input 
+      matInput formControlName="mail" placeholder="E-mail" >
+      <mat-error 
+        *ngIf="mail.hasError('required')">
+        E-mail is required.
+      </mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input 
+      matInput formControlName="description" placeholder="Description">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input 
+      matInput formControlName="picture" placeholder="Picture URL">
+    <mat-error 
+      *ngIf="picture.hasError('required')">
+      Picture URL is required.
+    </mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input 
+      matInput formControlName="role" placeholder="Role">
+    <mat-error 
+      *ngIf="role.hasError('required')">
+      Role is required.
+    </mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input 
+      matInput formControlName="room" placeholder="Room">
+    <mat-error 
+      *ngIf="room.hasError('required')">
+      Latitude is required.
+    </mat-error>
+  </mat-form-field>
+  <br>
+</form>
+<div>
+  {{ form.value | json }}
+  {{ form.status }}
+</div>

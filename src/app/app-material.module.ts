@@ -8,11 +8,13 @@ import {
   MatToolbarModule,
   MatTableModule,
   MatPaginatorModule,
-  MatSortModule,
   MatProgressSpinnerModule,
   MatSelectModule,
   MatCardModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatGridListModule,
+  MatMenuModule,
+  MatDialogModule,
 } from '@angular/material';
 
 @NgModule({
@@ -24,11 +26,13 @@ import {
     MatToolbarModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule,
     MatProgressSpinnerModule,
     MatSelectModule,
     MatCardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatDialogModule
   ]
 })
 export class AppMaterialModule { }

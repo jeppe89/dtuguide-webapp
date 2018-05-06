@@ -1,18 +1,16 @@
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DataSource, CollectionViewer } from '@angular/cdk/collections';
+import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { of } from 'rxjs/observable/of';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { catchError, finalize, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { AuthService } from './../../auth/auth.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { Component, OnInit, ViewChild, AfterViewInit, AfterViewChecked, AfterContentInit, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { merge } from 'rxjs/observable/merge';
 
 import { DTULocation } from '../shared/location.interface';
 import { LocationService } from './../shared/location.service';
-import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-import { ActivatedRoute } from '@angular/router';
-import { DataSource, CollectionViewer } from '@angular/cdk/collections';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { merge } from 'rxjs/observable/merge';
 import { LocationDataSource } from '../shared/location.datasource';
 
 @Component({
@@ -21,12 +19,13 @@ import { LocationDataSource } from '../shared/location.datasource';
   styleUrls: ['./location-list.component.css']
 })
 export class LocationListComponent implements OnInit, AfterViewInit {
+  title = 'Locations';
   dataSource: LocationDataSource;
   displayedColumns: string[] = ['id', 'name', 'floor', 'controls'];
   hoverIndex: number = null;
+  totalItems$: Observable<number>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
   @ViewChild('filter') filter: ElementRef;
 
   constructor(
@@ -34,12 +33,11 @@ export class LocationListComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.dataSource = new LocationDataSource(this.service);
-    this.dataSource.loadLocations('', 'asc', 1, 5);
+    this.dataSource.loadLocations('', 1, 5);
+    this.totalItems$ = this.dataSource.totalItems$;
   }
 
   ngAfterViewInit() {
-
-    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
     fromEvent(this.filter.nativeElement, 'keyup')
       .pipe(
@@ -51,7 +49,7 @@ export class LocationListComponent implements OnInit, AfterViewInit {
           })
       ).subscribe();
 
-    merge(this.sort.sortChange, this.paginator.page)
+    merge(this.paginator.page)
       .pipe(
           tap(() => this.loadLocationsPage())
       )
@@ -61,7 +59,6 @@ export class LocationListComponent implements OnInit, AfterViewInit {
   loadLocationsPage() {
     this.dataSource.loadLocations(
       this.filter.nativeElement.value,
-      this.sort.direction,
       (this.paginator.pageIndex + 1),
       this.paginator.pageSize
     );

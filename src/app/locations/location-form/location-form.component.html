@@ -1,8 +1,8 @@
 <form
   [formGroup]="form">
-  <mat-form-field>
-    <input 
-      matInput formControlName="id" placeholder="Id">
+  <mat-form-field *ngIf="!hideId">
+    <input
+      matInput formControlName="id" readonly="true" placeholder="Id">
       <mat-error 
         *ngIf="id.hasError('required')">
         Id is required.
@@ -64,3 +64,7 @@
     </mat-error>
   </mat-form-field>
 </form>
+<div>
+  {{ form.value | json }}
+  {{ form.status }}
+</div>

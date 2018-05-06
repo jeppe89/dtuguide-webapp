@@ -1,0 +1,8 @@
+<div *ngIf="location; else loading">
+  <app-location-form #locationFormComp [location]="location"></app-location-form>
+  <button mat-raised-button color="primary" (click)="saveChanges()">Save Changes</button>
+  <button mat-raised-button (click)="goBack()">Cancel</button>
+</div>
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

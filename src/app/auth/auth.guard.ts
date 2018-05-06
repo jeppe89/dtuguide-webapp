@@ -6,30 +6,23 @@ import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class AuthGuard implements CanActivateChild {
+export class AuthGuard implements CanActivate, CanActivateChild {
 
   constructor(public auth: AuthService, public router: Router) {}
-  /*
-  canActivate(): Observable<boolean> | Promise<boolean> | boolean {
+
+  canActivate() {
     if (!this.auth.isAuthenticated()) {
       this.router.navigate(['login']);
       return false;
     }
     return true;
   }
-  */
-  canActivateChild(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> {
-    return this.auth.isLoggedIn
-      .take(1)
-      .map((isLoggedIn: boolean) => {
-        if (!isLoggedIn) {
-          this.router.navigate(['/login']);
-        return false;
-      }
-      return true;
-    });
+
+  canActivateChild() {
+    if (!this.auth.isAuthenticated()) {
+      this.router.navigate(['login']);
+      return false;
+    }
+    return true;
   }
 }

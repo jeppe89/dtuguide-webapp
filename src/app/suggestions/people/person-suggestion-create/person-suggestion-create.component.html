@@ -1,0 +1,14 @@
+<h2> {{ title }}</h2>
+<app-person-form #personFormComp [hideId]=true></app-person-form>
+<button
+    mat-raised-button
+    [disabled]="!personFormComp.form.valid"
+    color="primary"
+    (click)="addPersonSuggestion()">
+    Create suggestion
+  </button>
+<button
+  mat-button
+  (click)="goBack()">
+  Cancel
+</button>
