@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
 
@@ -12,7 +13,7 @@ import { PersonSuggestion } from '../shared/person-suggestion.interface';
   styleUrls: ['./person-suggestion-create.component.css']
 })
 export class PersonSuggestionCreateComponent implements OnInit {
-  title = 'Create Suggestion';
+  title = 'Create Person Suggestion';
   @ViewChild(PersonFormComponent) personFormComp: PersonFormComponent;
 
   constructor(

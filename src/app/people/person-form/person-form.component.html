@@ -10,7 +10,7 @@
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input 
+    <input
       matInput formControlName="name" placeholder="Name" >
       <mat-error 
         *ngIf="name.hasError('required')">
@@ -44,19 +44,11 @@
   <mat-form-field>
     <input 
       matInput formControlName="role" placeholder="Role">
-    <mat-error 
-      *ngIf="role.hasError('required')">
-      Role is required.
-    </mat-error>
   </mat-form-field>
   <br>
   <mat-form-field>
     <input 
       matInput formControlName="room" placeholder="Room">
-    <mat-error 
-      *ngIf="room.hasError('required')">
-      Latitude is required.
-    </mat-error>
   </mat-form-field>
   <br>
 </form>

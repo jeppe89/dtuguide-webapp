@@ -13,8 +13,9 @@ import {
   MatCardModule,
   MatSnackBarModule,
   MatGridListModule,
-  MatMenuModule,
   MatDialogModule,
+  MatChipsModule,
+  MatIconModule,
 } from '@angular/material';
 
 @NgModule({
@@ -31,8 +32,9 @@ import {
     MatCardModule,
     MatSnackBarModule,
     MatGridListModule,
-    MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatChipsModule,
+    MatIconModule
   ]
 })
 export class AppMaterialModule { }

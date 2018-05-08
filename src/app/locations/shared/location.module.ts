@@ -16,7 +16,7 @@ import { AuthGuard } from '../../auth/auth.guard';
 import { LocationFormModule } from '../location-form/location-form.module';
 
 const routes: Routes = [
-  { path: 'locations', component: LocationListComponent, canActivateChild: [AuthGuard],
+  { path: 'locations', component: LocationComponent, canActivateChild: [AuthGuard],
     children: [
       { path: '', component: LocationListComponent },
       // { path: 'create', component: LocationCreateComponent },

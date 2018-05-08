@@ -18,15 +18,15 @@
     <mat-cell *matCellDef="let person"> {{person.role}} </mat-cell>
   </ng-container>
   <ng-container matColumnDef="room">
-    <mat-header-cell *matHeaderCellDef> Floor </mat-header-cell>
-    <mat-cell *matCellDef="let person"> {{person.room}} </mat-cell>
+    <mat-header-cell *matHeaderCellDef> Room </mat-header-cell>
+    <mat-cell *matCellDef="let person"> {{person.location.name}} </mat-cell>
   </ng-container>
   <ng-container matColumnDef="controls">
     <mat-header-cell *matHeaderCellDef></mat-header-cell>
     <mat-cell *matCellDef="let person; let i = index">
       <div *ngIf="hoverIndex==i">
         <a routerLink="{{person.name}}" mat-button color="primary">View</a>
-        <a routerLink="/suggestions/people/{{person.name}}/edit" mat-button color="primary">Suggest changes</a>
+        <a routerLink="/suggestions/people/create" mat-button color="primary">Suggest changes</a>
       </div>
     </mat-cell>
   </ng-container>

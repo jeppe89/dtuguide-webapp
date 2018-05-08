@@ -6,4 +6,5 @@ export interface DTULocation {
     name: string;
     latitude: number;
     longitude: number;
+    tags: string[];
 }

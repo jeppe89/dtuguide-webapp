@@ -33,20 +33,22 @@ export class PersonFormComponent implements OnInit {
 
       ]],
       role: ['', [
-        Validators.required
       ]],
       room: ['', [
-        Validators.required
       ]]
     });
   }
 
   ngOnInit() {
     let id = null;
+    let room = null;
     if (this.person) {
       id = (this.person as Person).id ?
         (this.person as Person).id :
         (this.person as PersonSuggestion).suggestionID;
+      room = (this.person as Person).id ?
+        (this.person as Person).location.name :
+        (this.person as PersonSuggestion).room;
     }
 
     this.form.setValue({
@@ -56,7 +58,7 @@ export class PersonFormComponent implements OnInit {
       description: this.person ? this.person.description : '',
       picture: this.person ? this.person.picture : '',
       role: this.person ? this.person.role : '',
-      room: this.person ? this.person.room : '',
+      room: this.person ? room : '',
     });
 
     if (this.hideId) {

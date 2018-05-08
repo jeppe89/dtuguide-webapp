@@ -1,3 +1,27 @@
-<p>
-  person-detail works!
-</p>
+<div *ngIf="searchData$ | async as searchData; else loading">
+  <p>
+    <b>Name: </b>{{ searchData.data[0].name }}
+  </p>
+  <p>
+    <b>E-mail: </b>{{ searchData.data[0].mail }}
+  </p>
+  <p>
+    <b>Description: </b>{{ searchData.data[0].description }}
+  </p>
+  <p>
+    <b>Role: </b>{{ searchData.data[0].role }}
+  </p>
+  <p>
+    <b>Room: </b>{{ searchData.data[0].location.name }}
+  </p>
+  <p>
+    <b>Picture: </b><br>
+    <img src="{{searchData.data[0].picture}}" width="100" height="100">
+  </p>
+  <a routerLink="/suggestions/people/create" mat-raised-button color="primary">Suggest changes</a>
+  <button mat-raised-button (click)="goBack()">Back</button>
+</div>
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>
+  

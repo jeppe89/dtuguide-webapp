@@ -11,6 +11,7 @@
   <br>
   <mat-form-field>
     <input 
+      [readonly]="nameReadOnly"
       matInput formControlName="name" placeholder="Name" >
       <mat-error 
         *ngIf="name.hasError('required')">
@@ -53,6 +54,10 @@
       *ngIf="latitude.hasError('required')">
       Latitude is required.
     </mat-error>
+    <mat-error
+      *ngIf="latitude.hasError('pattern')">
+      Latitude must be a valid number.
+    </mat-error>
   </mat-form-field>
   <br>
   <mat-form-field>
@@ -62,6 +67,27 @@
       *ngIf="longitude.hasError('required')">
       Longitude is required.
     </mat-error>
+    <mat-error
+      *ngIf="longitude.hasError('pattern')">
+      Longitude must be a valid number.
+    </mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-chip-list #tagList formControlName="tags">
+      <mat-chip *ngFor="let tag of tags"
+      [removable]="true" (removed)="removeTag(tag)">
+      {{tag}}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+      <input 
+        matInput  
+        placeholder="Add tag"
+        [matChipInputFor]="tagList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [matChipInputAddOnBlur]="true"
+        (matChipInputTokenEnd)="addTag($event)" />
+    </mat-chip-list>
   </mat-form-field>
 </form>
 <div>

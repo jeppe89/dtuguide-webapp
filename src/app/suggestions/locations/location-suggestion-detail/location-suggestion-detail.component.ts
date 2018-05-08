@@ -9,7 +9,6 @@ import { ActivatedRoute } from '@angular/router';
 import { LocationSuggestion } from './../shared/location-suggestion.interface';
 import { LocationSuggestionService } from '../shared/location-suggestion.service';
 import { DTULocation } from '../../../locations/shared/location.interface';
-import { DTUFloors } from '../../../locations/shared/floors';
 import { LocationService } from '../../../locations/shared/location.service';
 import { NotificationDialogComponent } from '../../../utils/notification-dialog/notification-dialog.component';
 
@@ -22,7 +21,6 @@ export class LocationSuggestionDetailComponent implements OnInit {
 
   suggestion: LocationSuggestion;
   location: DTULocation;
-  floors = DTUFloors;
 
   constructor(
     private service: LocationSuggestionService,
@@ -52,7 +50,9 @@ export class LocationSuggestionDetailComponent implements OnInit {
 
   getLocation() {
     this.locationService.getLocation(this.suggestion.name)
-      .subscribe(searchData => this.location = searchData.data[0] as DTULocation);
+      .subscribe(searchData => {
+        this.location = searchData.data[0] as DTULocation;
+      });
   }
 
   deleteSuggestion() {

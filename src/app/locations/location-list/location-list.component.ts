@@ -21,7 +21,7 @@ import { LocationDataSource } from '../shared/location.datasource';
 export class LocationListComponent implements OnInit, AfterViewInit {
   title = 'Locations';
   dataSource: LocationDataSource;
-  displayedColumns: string[] = ['id', 'name', 'floor', 'controls'];
+  displayedColumns: string[] = [ 'name', 'floor', 'controls'];
   hoverIndex: number = null;
   totalItems$: Observable<number>;
 

@@ -3,7 +3,8 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { DTUFloors } from '../../locations/shared/floors';
 import { LocationSuggestion } from './../../suggestions/locations/shared/location-suggestion.interface';
 import { DTULocation } from '../../locations/shared/location.interface';
-
+import {ENTER, COMMA} from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material';
 
 @Component({
   selector: 'app-location-form',
@@ -16,6 +17,10 @@ export class LocationFormComponent implements OnInit {
   floors: string[] = DTUFloors;
   @Input() location: DTULocation | LocationSuggestion;
   @Input() hideId: boolean;
+  // Tags chip list
+  separatorKeysCodes = [ENTER, COMMA];
+  tags: string[] = [];
+  nameReadOnly = false;
 
   constructor(
     @Inject(FormBuilder) fb: FormBuilder) {
@@ -36,10 +41,15 @@ export class LocationFormComponent implements OnInit {
           Validators.minLength(4)
         ]],
         latitude: ['', [
-          Validators.required
+          Validators.required,
+          Validators.pattern('^[0-9]*(\.[0-9]{1,8})?$')
         ]],
         longitude: ['', [
-          Validators.required
+          Validators.required,
+          Validators.pattern('^[0-9]*(\.[0-9]{1,8})?$')
+        ]],
+        tags: ['', [
+
         ]]
       });
   }
@@ -50,6 +60,9 @@ export class LocationFormComponent implements OnInit {
       id = (this.location as DTULocation).id ?
         (this.location as DTULocation).id :
         (this.location as LocationSuggestion).suggestionID;
+
+      this.tags = this.location.tags ? this.location.tags : [];
+      this.nameReadOnly = true;
     }
 
     this.form.setValue({
@@ -60,10 +73,38 @@ export class LocationFormComponent implements OnInit {
       name: this.location ? this.location.name : '',
       latitude: this.location ? this.location.latitude : '',
       longitude: this.location ? this.location.longitude : '',
+      tags: this.tags
     });
 
     if (this.hideId) {
       this.id.disable();
+    }
+  }
+
+
+  addTag(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    // Add tag
+    if ((value || '').trim()) {
+      const tagId = this.tags.indexOf(value);
+      if (tagId < 0) {
+        this.tags.push(value.trim());
+      }
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  removeTag(tag: any): void {
+    const index = this.tags.indexOf(tag);
+
+    if (index >= 0) {
+      this.tags.splice(index, 1);
     }
   }
 

@@ -10,4 +10,5 @@ export interface LocationSuggestion {
     latitude: number;
     longitude: number;
     name: string;
+    tags: string[];
 }

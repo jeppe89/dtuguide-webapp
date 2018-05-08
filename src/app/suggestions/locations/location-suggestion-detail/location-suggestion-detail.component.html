@@ -1,62 +1,18 @@
-<div *ngIf="location; else loading">
-  {{ suggestion.suggestionID }}<br>
-  {{ suggestion.author }}<br>
-  {{ suggestion.date }}<br><br>
-  {{ suggestion.name }} | {{ location.name }}<br>
-  {{ suggestion.description }} | {{ location.description }}<br>
-  {{ floors[suggestion.floor] }} | {{ floors[location.floor] }}<br>
-  {{ suggestion.landmark }} | {{ location.landmark }}<br>
-  {{ suggestion.latitude }} | {{ location.latitude }}<br>
-  {{ suggestion.longitude }} | {{ location.longitude }}<br>
-  <mat-card>
-    <mat-card-content>
-      <p>
-        <b>Name:</b> {{ location.name }}
-      </p>
-      <p>
-        <b>Description:</b> {{ location.description }}
-      </p>
-      <p>
-        <b>Floor:</b> {{ floors[location.floor] }}
-      </p>
-      <p>
-        <b>Landmark:</b> {{ location.landmark }}
-      </p>
-      <p>
-        <b>Latitude:</b> {{ location.latitude }}
-      </p>
-      <p>
-        <b>Longitude:</b> {{ location.longitude }}
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <br>
-      <br>
-    </mat-card-actions>
-  </mat-card>
-  <mat-card>
-      <mat-card-content>
-        <p>
-          <b>Name:</b> {{ suggestion.name }}
-        </p>
-        <p>
-          <b>Description</b> {{ suggestion.description }}
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="approveSuggestion()">Approve</button>
-        <button mat-raised-button routerLink="edit">Edit</button>
-        <button mat-raised-button color="warn" (click)="deleteSuggestion()">Delete</button>
-      </mat-card-actions>
-    </mat-card>
-  
+<div *ngIf="suggestion; else loading">
+  <div *ngIf="location">
+      <app-suggestion-detail-card style="display: inline-block" [location]="location"></app-suggestion-detail-card>
+      <i class="material-icons md-36">arrow forward</i>
+  </div>
+  <app-suggestion-detail-card style="display: inline-block" [location]="suggestion"></app-suggestion-detail-card>
 </div>
+<br>
 <div>
-  <div style="display: inline" *ngIf="isAdmin()">
+  <div style="display: inline-block" *ngIf="isAdmin()">
     <button mat-raised-button color="primary" (click)="approveSuggestion()">Approve</button>
     <button mat-raised-button color="warn" (click)="deleteSuggestion()">Delete</button>
   </div>
   <button mat-raised-button routerLink="edit">Edit</button>
+  <br>
   <br>
   <button mat-raised-button (click)="goBack()">Go back</button>
 </div>

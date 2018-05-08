@@ -9,10 +9,6 @@
 
 <mat-table #table [dataSource]="dataSource"
   (mouseleave)="hoverIndex = null">
-  <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-      <mat-cell *matCellDef="let location;"> {{location.id}} </mat-cell>
-  </ng-container>
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
     <mat-cell *matCellDef="let location"> {{location.name}} </mat-cell>
@@ -26,7 +22,7 @@
     <mat-cell *matCellDef="let location; let i = index">
       <div *ngIf="hoverIndex==i">
         <a routerLink="{{location.name}}" mat-button color="primary">View</a>
-        <a routerLink="/suggestions/locations/{{location.name}}/edit" mat-button color="primary">Suggest changes</a>
+        <a routerLink="/suggestions/locations/create" mat-button color="primary">Suggest changes</a>
       </div>
     </mat-cell>
   </ng-container>

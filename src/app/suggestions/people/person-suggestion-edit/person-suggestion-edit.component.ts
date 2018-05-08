@@ -2,7 +2,7 @@ import { Observable } from 'rxjs/Observable';
 import { NotificationDialogComponent } from './../../../utils/notification-dialog/notification-dialog.component';
 import { MatDialog } from '@angular/material';
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { PersonSuggestionService } from '../shared/person-suggestion.service';
@@ -28,7 +28,7 @@ export class PersonSuggestionEditComponent implements OnInit, OnDestroy {
   constructor(
     private service: PersonSuggestionService,
     private route: ActivatedRoute,
-    private loc: Location,
+    private router: Router,
     private notification: NotificationService,
     private dialog: MatDialog) { }
 
@@ -75,6 +75,6 @@ export class PersonSuggestionEditComponent implements OnInit, OnDestroy {
   }
 
   goBack() {
-    this.loc.back();
+    this.router.navigate(['/suggestions/people']);
   }
 }

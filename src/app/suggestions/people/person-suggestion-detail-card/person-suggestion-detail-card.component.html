@@ -1,0 +1,29 @@
+<mat-card class="example-card">
+    <mat-card-content>
+      <p>
+        <span *ngIf="person.author"><b>Author: </b>{{ person.author }}</span>
+      </p>
+      <p>
+        <span *ngIf="person.date"><b>Date: </b>{{ person.date }}</span>
+      </p>
+      <p>
+        <b>Name: </b>{{ person.name }}
+      </p>
+      <p>
+        <b>E-mail: </b> {{ person.mail }}
+      </p>
+      <p>
+        <b>Description: </b>{{ person.description }}
+      </p>
+      <p>
+        <b>Picture: </b><br>
+        <img src="{{person.picture}}" width="100" height="100">
+      </p>
+      <p>
+        <b>Role: </b>{{ person.role }}
+      </p>
+      <p>
+        <b>Room: </b>{{ person.room }}
+      </p>
+    </mat-card-content>
+  </mat-card>

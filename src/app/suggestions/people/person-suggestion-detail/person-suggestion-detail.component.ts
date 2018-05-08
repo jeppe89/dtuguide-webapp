@@ -43,15 +43,13 @@ export class PersonSuggestionDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.service.getSuggestion(id).subscribe((suggestion: PersonSuggestion) => {
       this.suggestion = suggestion;
-      // this.getPerson(suggestion.suggestionID);
+      this.getPerson(suggestion.name);
     });
   }
-  /*
   getPerson(id) {
-    this.personService.getPerson()
+    this.personService.getPerson(id)
     .subscribe((searchData: SearchData) => this.person = searchData.data[0] as Person);
   }
-  */
 
   deleteSuggestion() {
     this.openDialog('Delete suggestion').afterClosed().subscribe(result => {

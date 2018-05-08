@@ -25,4 +25,8 @@ export class PersonDetailComponent implements OnInit {
     this.searchData$ = this.service.getPerson(id);
   }
 
+  goBack() {
+    this.loc.back();
+  }
+
 }

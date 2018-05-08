@@ -13,6 +13,7 @@ import { PersonSuggestionCreateComponent } from '../person-suggestion-create/per
 import { PersonFormModule } from '../../../people/person-form/person-form.module';
 import { PersonSuggestionDetailComponent } from '../person-suggestion-detail/person-suggestion-detail.component';
 import { PersonSuggestionEditComponent } from '../person-suggestion-edit/person-suggestion-edit.component';
+import { PersonSuggestionDetailCardComponent } from '../person-suggestion-detail-card/person-suggestion-detail-card.component';
 
 const routes: Routes = [
   { path: 'suggestions/people', component: PersonSuggestionComponent, canActivateChild: [AuthGuard],
@@ -42,7 +43,8 @@ const routes: Routes = [
     PersonSuggestionListComponent,
     PersonSuggestionCreateComponent,
     PersonSuggestionDetailComponent,
-    PersonSuggestionEditComponent
+    PersonSuggestionEditComponent,
+    PersonSuggestionDetailCardComponent
   ],
   providers: [PersonSuggestionService]
 })

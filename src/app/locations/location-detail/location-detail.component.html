@@ -1,11 +1,30 @@
 <div *ngIf="searchData$ | async as searchData; else loading">
-  {{ searchData.data[0].name }}<br>
-  {{ searchData.data[0].description }}<br>
-  {{ searchData.data[0].landmark }}<br>
-  {{ floors[searchData.data[0].floor] }}<br>
-  {{ searchData.data[0].latitude }}<br>
-  {{ searchData.data[0].longitude }}<br>
-  <a routerLink="/suggestions/locations/{{searchData.data[0].name}}/edit" mat-raised-button color="primary">Suggest changes</a>
+  <p>
+    <b>Name: </b>{{ searchData.data[0].name }}
+  </p>
+  <p>
+    <b>Description: </b>{{ searchData.data[0].description }}
+  </p>
+  <p>
+    <b>Landmark: </b>{{ searchData.data[0].landmark }}
+  </p>
+  <p>
+    <b>Floor: </b>{{ floors[searchData.data[0].floor] }}
+  </p>
+  <p>
+    <b>Latitude: </b>{{ searchData.data[0].latitude }}
+  </p>
+  <p>
+    <b>Longitude: </b>{{ searchData.data[0].longitude }}
+  </p>
+  <p>
+    <b>Tags: </b>
+    <mat-chip-list>
+      <mat-chip *ngFor="let tag of searchData.data[0].tags">{{ tag }}</mat-chip>
+    </mat-chip-list>
+  </p>
+  <br>
+  <a routerLink="/suggestions/locations/create" mat-raised-button color="primary">Suggest changes</a>
   <button mat-raised-button (click)="goBack()">Back</button>
 </div>
 <ng-template #loading>

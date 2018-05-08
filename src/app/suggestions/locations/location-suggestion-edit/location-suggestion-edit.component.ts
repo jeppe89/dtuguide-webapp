@@ -2,7 +2,7 @@ import { NotificationService } from './../../../utils/notification.service';
 import { LocationSuggestionPut } from './../shared/location-suggestion-put.interface';
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit, Input, ViewChild, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { LocationSuggestionService } from './../shared/location-suggestion.service';
@@ -29,7 +29,7 @@ export class LocationSuggestionEditComponent implements OnInit, OnDestroy {
   constructor(
     private service: LocationSuggestionService,
     private route: ActivatedRoute,
-    private loc: Location,
+    private router: Router,
     private notification: NotificationService,
     private dialog: MatDialog) { }
 
@@ -75,7 +75,7 @@ export class LocationSuggestionEditComponent implements OnInit, OnDestroy {
   }
 
   goBack(): void {
-    this.loc.back();
+    this.router.navigate(['/suggestions/locations']);
   }
 
 }

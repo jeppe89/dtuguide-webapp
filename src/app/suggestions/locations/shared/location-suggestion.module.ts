@@ -1,3 +1,4 @@
+import { SuggestionDetailCardModule } from './../../suggestion-detail-card/suggestion-detail-card.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
@@ -31,7 +32,8 @@ const routes: Routes = [
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AppMaterialModule,
-    LocationFormModule
+    LocationFormModule,
+    SuggestionDetailCardModule
   ],
   exports: [
     RouterModule
